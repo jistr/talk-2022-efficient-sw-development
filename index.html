@@ -1,40 +1,174 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>Best Practice Tips for Efficient SW Development</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/beige.css">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Best practice tips<br/>for efficient SW development</h2>
+          <p>&nbsp;</p>
+          <h4>Jiří Stránský</h4>
+          <h4>DevConf.cz 2022</h4>
+        </section>
+        <section>
+          <h3>Why i talk about efficiency</h3>
+          <p class="fragment">
+            OS Migrate project<br/>
+            OpenStack cloud-to-cloud migration toolkit
+          </p>
+          <p>
+            <span class="fragment">3 people team for:</span><br/>
+            <span class="fragment">development, testing, docs,</span><br/>
+            <span class="fragment">CI ops (3 clouds),</span><br/>
+            <span class="fragment">supporting users.</span>
+          </p>
+        </section>
+        <section>
+          <h3>In general</h3>
+          <p>
+            There's a lot on our plate.
+          </p>
+          <p>
+            <span class="fragment">Work insane hours? </span><b class="fragment">No!</b>
+          </p>
+          <p class="fragment">
+            Improve <b>how</b> we spend time!
+          </p>
+        </section>
+        <section data-transition="slide-in fade-out">
+          <h3>⬆ Intentionality; ⬇ Aimlessness</h3>
+          <p class="fragment">
+            "What am I solving by doing this?"<br/>
+            "Is it worth the time?"
+          </p>
+          <p class="fragment">
+            Existing activities:<br/>
+            <span class="fragment">Retrospect. Don't get stuck in obsolete activities.</span><br/>
+            <span class="fragment">Hint: Question disliked activities/patterns.</span><br/>
+            &nbsp;
+          </p>
+        </section>
+        <section data-transition="fade-in fade-out">
+          <h3>⬆ Intentionality; ⬇ Aimlessness</h3>
+          <p>
+            "What am I solving by doing this?"<br/>
+            "Is it worth the time?"
+          </p>
+          <p class="fragment">
+            New goals:<br/>
+            <span class="fragment">"What do we want to achieve?" is not enough.</span><br/>
+            <span class="fragment">"How much of our time is this goal worth?"</span><br/>
+            <span class="fragment">Adjust goal scope accordingly.</span>
+          </p>
+        </section>
+        <section data-transition="fade-in slide-out">
+          <h3>⬆ Intentionality; ⬇ Aimlessness</h3>
+          <p>
+            "What am I solving by doing this?"<br/>
+            "Is it worth the time?"
+          </p>
+          <p class="fragment">
+            Experiments:<br/>
+            <span class="fragment">Often necessary for progress!</span><br/>
+            <span class="fragment">Define "why", scope, timebox.</span><br/>
+            &nbsp;
+          </p>
+        </section>
+        <section>
+          <h3>⬆ Order, Consistency; ⬇ Chaos</h3>
+          <p class="fragment">
+            Inherent complexity vs added complexity.<br/>
+            <a class="fragment" href="https://en.wikipedia.org/wiki/Decision_fatigue">en.wikipedia.org/wiki/Decision_fatigue</a>
+          <p class="fragment">
+            Automate all the things.<br/>
+            <span class="fragment">If you can't automate, document.</span>
+          </p>
+          <p class="fragment">
+            Consistency with existing suboptimals<br/>
+            can be better than isolated improvement.<br/>
+            <span class="fragment">(When refactoring, fix all occurences.)</span>
+          </p>
+        </section>
+        <section>
+          <h3>Examples from OS Migrate (1/3)</h3>
+          <p class="fragment">
+            <b>CI philosophy:</b><br/>
+            <span class="fragment">CI is the focal point of QA.</span><br/>
+            <span class="fragment">Strict separation tests vs CI, documented.</span><br/>
+            <span class="fragment">All test types runnable by devs, exactly as CI.</span>
+            <span class="fragment">Containerized dev/CI environment.</span>
+          </p>
+        </section>
+        <section>
+          <h3>Examples from OS Migrate (2/3)</h3>
+          <p class="fragment">
+            <b>Testing philosophy:</b><br/>
+            <span class="fragment">Separate internal logic from external API calls<br/>
+            so that unit tests can be written without mocks.</span><br/>
+            <span class="fragment">Unit tests for pure internal logic only.</span><br/>
+            <span class="fragment">Functional tests for involving externals.</span><br/>
+            <span class="fragment">➡ Tests easy to write and maintain.</span>
+          </p>
+        </section>
+        <section>
+          <h3>Examples from OS Migrate (3/3)</h3>
+          <p class="fragment">
+            <b>CI ops:</b><br/>
+            <span class="fragment">3 clouds / 5 routers / 11 subnets / 20 servers.</span><br/>
+            <span class="fragment">All virtual.</span><br/>
+            <span class="fragment">No HW procurement, no obsolesence.</span><br/>
+            <span class="fragment">Scales dynamically. Software-defined, automated.</span>
+          </p>
+        </section>
+        <section>
+          <h3>Summary</h3>
+          <p class="fragment">
+            <b>Keep costs (effort) proportional to benefits.</b><br/>
+            "Why". Scope. Timeboxing. Retrospectives.
+          </p>
+          <p class="fragment">
+            <b>Keep your brain power for the important stuff.</b><br/>
+            Automation. Documentation. Consistency.
+          </p>
+        </section>
+        <section>
+          <h3>Thanks for listening</h3>
+          <p>
+            <a href="https://www.github.com/os-migrate/os-migrate">github.com/os-migrate/os-migrate</a>
+          </p>
+          <p>
+            <a href="https://www.jistr.com/about/">jistr.com/about</a>
+          </p>
+        </section>
+      </div>
+    </div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+      });
+    </script>
+  </body>
 </html>
